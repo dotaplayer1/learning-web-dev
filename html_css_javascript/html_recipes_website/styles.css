@@ -1,0 +1,14 @@
+img {
+    width: 300px;
+    height: auto;
+}
+
+h1, p, h2, ul {
+    background-color: rgb(194, 200, 202);
+}
+
+p {
+    font-size: 20px;
+}
+
+
