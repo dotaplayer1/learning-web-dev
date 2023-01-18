@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: gray;
+}
+
+.header .links {
+    display: flex;
+    gap: 16px;
+}
+
+.header .logo {
+    color: yellow;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+body {
+    margin: 0px;
+}
