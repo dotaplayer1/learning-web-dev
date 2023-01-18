@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 16px;
     background-color: gray;
+    align-items: center;
 }
 
 .header .links {
@@ -12,6 +13,8 @@
 
 .header .logo {
     color: yellow;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 a {
