@@ -41,13 +41,21 @@ body {
     color: #f9faf8;
     font-size: 18px;
     color: #e5e7eb;
-    gap: 20px;
+    gap: 40px;
     width: 80%;
     justify-content: space-between;
 }
 
-.headerbottom > img {
-    flex-basis: content;
+.image {
+    align-self: stretch;
+    flex: 1.25;
+    border-radius: 12px;
+    background: url(./images/pexels-pixabay-416160.jpg);
+    background-size: cover;
+}
+
+.hbtext {
+    flex: 1;
 }
 
 .hbtitle {
