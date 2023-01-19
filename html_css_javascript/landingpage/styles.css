@@ -1,9 +1,16 @@
 .header {
     display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    background-color: gray;
+    flex-direction: column;
+    background-color: #1f2937;
     align-items: center;
+}
+
+.headertop {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0px;
+    align-items: center;
+    width: 80%;
 }
 
 .header .links {
@@ -24,4 +31,37 @@ a {
 
 body {
     margin: 0px;
+}
+
+.headerbottom {
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 75px;
+    color: #f9faf8;
+    font-size: 18px;
+    color: #e5e7eb;
+    gap: 20px;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.hbtitle {
+    font-size: 48px;
+    font-weight: bolder;
+}
+
+.headerbottom img {
+    height: 300px;
+
+}
+
+.headerbottom button {
+    background-color: rgb(34, 34, 244);
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 700;
+    color: #f9faf8;
+    margin-top: 32px;
 }
