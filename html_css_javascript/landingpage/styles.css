@@ -44,16 +44,15 @@ body {
     gap: 20px;
     width: 80%;
     justify-content: space-between;
-    max-width: 100%;
+}
+
+.headerbottom > img {
+    flex-basis: content;
 }
 
 .hbtitle {
     font-size: 48px;
     font-weight: bolder;
-}
-
-.hbtext {
-    min-width: 300px;
 }
 
 .headerbottom button {
@@ -72,15 +71,27 @@ img {
     height: 300px;
 }
 
-.section1 {
+.section1body {
+    width: 80%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 100px;
 }
 
-.section1body {
+.section1 {
     display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.section1title {
+    text-align: center;
+    padding: 40px 0px;
+    font-size: 36px;
+    font-weight: bolder;
+    color: #1f2937;
+
 }
 
 .container {
@@ -88,11 +99,14 @@ img {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    min-width: 150px;
+    max-width: 170px;
+    gap: 20px;
+    color: rgb(94, 88, 88);
 }
 
 .box {
     height: 150px;
     width: 150px;
-    border: 5px solid red;
+    border: 10px solid blue;
+    border-radius: 12px;
 }
