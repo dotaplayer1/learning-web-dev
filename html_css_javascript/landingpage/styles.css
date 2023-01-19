@@ -115,6 +115,35 @@ img {
 .box {
     height: 150px;
     width: 150px;
-    border: 10px solid blue;
-    border-radius: 12px;
+    border: 5px solid blue;
+    border-radius: 16px;
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    padding: 120px 0px;
+    background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.quotetext {
+    font-size: 36px;
+    font-weight: lighter;
+    font-style: italic;
+    color: #1f2937;
+    padding-bottom: 30px;
+}
+
+.quoteauthor {
+    font-size: 24px;
+    font-weight: bold;
+    align-self: flex-end;
 }
