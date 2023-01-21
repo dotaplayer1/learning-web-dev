@@ -30,21 +30,50 @@ function printResult(winlose, computerChoice) {
 
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === "rock" && computerChoice === "scissors") {
-        return printResult("win", computerChoice);
+        printResult("win", computerChoice);
+        return 1;
     } else if (playerChoice === "paper" && computerChoice === "rock") {
-        return printResult("win", computerChoice);
+        printResult("win", computerChoice);
+        return 1;
     } else if (playerChoice === "scissors" && computerChoice === "paper") {
-        return printResult("win", computerChoice);
+        printResult("win", computerChoice);
+        return 1;
     } else if (playerChoice === "rock" && computerChoice === "paper") {
-        return printResult("lose", computerChoice);
+        printResult("lose", computerChoice);
+        return 0;
     } else if (playerChoice === "paper" && computerChoice === "scissors") {
-        return printResult("lose", computerChoice);
+        printResult("lose", computerChoice);
+        return 0;
     } else if (playerChoice === "scissors" && computerChoice === "rock") {
-        return printResult("lose", computerChoice);
+        printResult("lose", computerChoice);
+        return 0;
     } else {
-        return "Tie game!"
+        console.log("Tie game! Opponent chose " + computerChoice + ".");
+        return 2;
     }
 }
 
-console.log(playRound(getPlayerChoice(), getComputerChoice()));
+function game() {
+    let computerScore = 0;
+    let playerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        console.log("Player score: " + playerScore + ". Comouter score: " + computerScore + ".");
+        let result = playRound(getPlayerChoice(), getComputerChoice());
+        if (result === 0) {
+            computerScore++;
+        } else if (result === 1) {
+            playerScore++;
+        } else {
+            playerScore++;
+            computerScore++;
+        }
+    }
+    console.log("Final score. Player score: " + playerScore + ". Comouter score: " + computerScore + ".");
+    return 1;
+}
+
+game();
+
+
+
 
