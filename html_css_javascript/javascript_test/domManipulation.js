@@ -31,3 +31,16 @@ h1.textContent = ("I'm in a div");
 const p = document.createElement("p");
 pinkBox.appendChild(p);
 p.textContent = ("ME TOO!");
+
+const btn2 = document.querySelector("#btn2");
+btn2.onclick = () => alert("button 2");
+
+const btn3 = document.querySelector("#btn3");
+btn3.addEventListener("click", () => {
+    alert("button 3");
+});
+
+const btn4 = document.querySelector("#btn4");
+btn4.addEventListener('keydown', function (e) {
+    e.target.style.background = "blue";
+});
