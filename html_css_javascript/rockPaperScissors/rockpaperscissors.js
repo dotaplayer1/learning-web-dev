@@ -1,4 +1,8 @@
-console.log("Hello world");
+const message = document.querySelector("#message");
+const score = document.querySelector("#score");
+const rockbutton = document.querySelector("#rockbutton");
+const paperbutton = document.querySelector("#paperbutton");
+const scissorsbutton = document.querySelector("#scissorsbutton");
 
 let getRandomInt = (max) => Math.floor(Math.random() * max);
 
@@ -15,13 +19,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    let userInput = "";
-    while (true) {
-        userInput = prompt("Choose rock, paper, or scissors: ").toLowerCase();
-        if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-            return userInput;
-        }
-    }
+    
 }
 
 function printResult(winlose, computerChoice) {
@@ -56,19 +54,18 @@ function playRound(playerChoice, computerChoice) {
 function game() {
     let computerScore = 0;
     let playerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        console.log("Player score: " + playerScore + ". Comouter score: " + computerScore + ".");
-        let result = playRound(getPlayerChoice(), getComputerChoice());
-        if (result === 0) {
-            computerScore++;
-        } else if (result === 1) {
-            playerScore++;
-        } else {
-            playerScore++;
-            computerScore++;
-        }
+    message.textContent = "Pick rock, paper, or scissors: ";
+    getPlayerChoice();
+    
+    if (result === 0) {
+        computerScore++;
+    } else if (result === 1) {
+        playerScore++;
+    } else {
+        playerScore++;
+        computerScore++;
     }
-    console.log("Final score. Player score: " + playerScore + ". Comouter score: " + computerScore + ".");
+
     return 1;
 }
 
