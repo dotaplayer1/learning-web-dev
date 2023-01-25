@@ -21,21 +21,22 @@ function getComputerChoice() {
     }
 }
 
+let chooseRock = () => playRound("rock", getComputerChoice());
+let choosePaper = () => playRound("paper", getComputerChoice());
+let chooseScissors = () => playRound("scissors", getComputerChoice());
+
 function game() {
     message.textContent = "Pick rock, paper, or scissors: ";
-    rockbutton.addEventListener("click", () => {
-        playRound("rock", getComputerChoice());
-    });
-    paperbutton.addEventListener("click", () => {
-        playRound("paper", getComputerChoice());
-    });
-    scissorsbutton.addEventListener("click", () => {
-        playRound("scissors", getComputerChoice());
-    });
+    rockbutton.addEventListener("click", chooseRock);
+    paperbutton.addEventListener("click", choosePaper);
+    scissorsbutton.addEventListener("click", chooseScissors);
 }
 
 function endGame(winlose) {
     message.textContent = `Game over! you ${winlose}!`;
+    rockbutton.removeEventListener("click", chooseRock);
+    paperbutton.removeEventListener("click", choosePaper);
+    scissorsbutton.removeEventListener("click", chooseScissors);
 }
 
 function printResult(winlose, computerChoice) {
