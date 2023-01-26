@@ -1,3 +1,9 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     height: 576px;
     width: 576px;
@@ -12,3 +18,10 @@
     border: 1px solid black;
 }
 
+.white_background {
+    background-color: white;
+}
+
+.black_background {
+    background-color: black;
+}
