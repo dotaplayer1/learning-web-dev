@@ -1,0 +1,14 @@
+.container {
+    height: 576px;
+    width: 576px;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container > div {
+    height: 16px;
+    width: 16px;
+    border: 1px solid black;
+}
+
