@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+#left {
+    background-color: aquamarine;
+    width: 40vw;
+    height: 100vh;
+    
+}
+
+#right {
+    width: 60vw;
+    padding: 15px;
+    margin: 20vh 0px;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
