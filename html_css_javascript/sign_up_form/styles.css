@@ -1,3 +1,6 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
 body {
     display: flex;
     margin: 0px;
@@ -14,10 +17,45 @@ body {
 #right {
     width: 60vw;
     padding: 15px;
-    margin: 20vh 0px;
+    margin: 10vh 0px;
 }
 
 p {
     margin: 0px;
     padding: 0px;
+}
+
+h4 {
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+#middle {
+    border: 1px solid #000;
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: #f2f1e8;
+    box-shadow: rgb(0 0 0 / 15%) 0px 3px 3px 0px;
+}
+
+.textfield {
+    display: flex;
+    flex-direction: column;
+    padding-right: 60px;
+    padding-bottom: 20px;
+}
+
+#formbody {
+    display: flex;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 550;
+}
+
+#top {
+    font-weight: 700;
+    font-size: 24px;
 }
