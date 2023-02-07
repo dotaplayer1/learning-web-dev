@@ -65,7 +65,7 @@ table {
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     color: white;
-    padding-left: 24px;
+    padding: 0px 24px;
 }
 
 .header {
@@ -84,7 +84,7 @@ table {
 }
 
 .header .headertop .searchbar {
-    height: 20px;
+    height: 24px;
     width: 40vw;
     background-color: rgb(177, 173, 173);
     border-radius: 12px;
@@ -125,7 +125,48 @@ table {
 .content {
     grid-row: 2 / 7;
     grid-column: 2 / 6;
-    background-color: rgb(220, 211, 211);
+    background-color: rgb(207, 210, 227);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.content .contentleft {
+    grid-column: 1 / 4;
+}
+
+.content .contentright {
+    grid-column: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.contentrighttitle {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+}
+
+.announcements {
+    background-color: white;
+    border-radius: 12px;
+}
+
+.announcementscontent {
+    font-size: 12px;
+    padding: 16px 12px;
+}
+
+.line {
+    height: 1px;
+    width: auto;
+    padding-left: 1vw;
+    padding-right: 1vw;;
+    background-color: rgb(207, 210, 227);
+}
+
+.middlepadding {
+    padding: 12px;
 }
 
 .sidebar .sidebarlogo {
