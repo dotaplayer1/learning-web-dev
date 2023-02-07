@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -20,7 +22,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -47,25 +48,58 @@ table {
 	border-spacing: 0;
 }
 
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 #body {
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 16.66vh);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .sidebar {
     grid-row: 1 / 7;
-    background-color: red;
+    background-color: rgb(20, 118, 238);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    padding-left: 24px;
 }
 
 .header {
-    grid-column: 2 / 9;
+    grid-column: 2 / 6;
     background-color: blue;
     display: flex;
 }
 
 .content {
     grid-row: 2 / 7;
-    grid-column: 2 / 9;
+    grid-column: 2 / 6;
     background-color: green;
+}
+
+.sidebar .sidebarlogo {
+    font-weight: bold;
+    font-size: 24px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    display: flex;
+}
+
+.sidebar .sidebarcontent > div {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 16px;
+}
+
+.sidebar .sidebarbottom {
+    padding-top: 48px;
+}
+
+.sidebar .sidebarbottom > div {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 16px;
 }
