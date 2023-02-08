@@ -76,6 +76,7 @@ table {
     padding: 16px;
     padding-right: 32px;
     padding-left: 32px;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
 }
 
 .headertop {
@@ -158,6 +159,7 @@ table {
     padding: 32px;
     height: 150px;
     border-radius: 20px;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
 }
 
 .card p {
@@ -183,6 +185,7 @@ table {
 .announcements {
     background-color: white;
     border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
 }
 
 .announcementscontent {
