@@ -2,8 +2,9 @@ const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pageCount = document.querySelector('#pagecount');
 const isRead = document.querySelector('#hasread');
-const submitButton = document.querySelector('input[type="button"]');
+const submitButton = document.querySelector('input[type="submit"]');
 const displaySection = document.querySelector('#displaysection');
+const errorAlertSlot = document.querySelector('#errorAlertSlot');
 
 let myLibrary = [];
 
@@ -37,7 +38,7 @@ Book.prototype.cardFactory = function() {
     deleteButton.onclick = () => card.remove();
     
     const hasReadButton = document.createElement('button');
-    if (this.isRead = true) {
+    if (this.isRead === true) {
         hasReadButton.classList.add('is_read');
         hasReadButton.textContent = 'Read';
     } else {
@@ -69,7 +70,9 @@ function addBookToLibrary() {
     const bookAuthor = author.value;
     const bookPageCount = pageCount.value;
     const bookIsRead = isRead.checked;
-
+    title.value = '';
+    author.value = '';
+    pageCount.value = '';
     let newBook = new Book(bookTitle, bookAuthor, bookPageCount, bookIsRead);
     console.log(newBook);
     myLibrary.push(newBook); 
@@ -77,4 +80,26 @@ function addBookToLibrary() {
     displayLibrary(newBook);
 }
 
-submitButton.addEventListener("click", addBookToLibrary);
+submitButton.addEventListener("click", submitButtonClicked);
+
+function formFieldsNotEmpty() {
+    if (title.value != '' && author.value != '' && pageCount.value != '') {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function submitButtonClicked(event) {
+    if (formFieldsNotEmpty() === 1) {
+        addBookToLibrary();
+        errorAlertSlot.textContent = '';
+    } else {
+        if (errorAlertSlot.textContent === '') {
+            const errorAlert = document.createElement('p');
+            errorAlert.textContent = 'No empty fields allowed!'
+            errorAlertSlot.appendChild(errorAlert);
+        }
+    }
+    event.preventDefault();
+}

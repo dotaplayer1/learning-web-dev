@@ -12,7 +12,7 @@
 form {
     display: flex;
     flex-direction: column;
-    background-color: rgb(219, 217, 217);
+    background-color: rgb(240, 240, 240);
     padding: 12px;
     border: 1px solid #000;
     border-radius: 12px;
@@ -41,7 +41,7 @@ body {
 }
 
 .card {
-    background-color: rgb(219, 217, 217);
+    background-color: rgb(240, 240, 240);
     padding: 12px;
     border: 1px solid #000;
     min-height: 140px;
@@ -52,7 +52,6 @@ p {
     padding: 0px;
     margin: 0px;
     padding-bottom: 8px;
-    font-weight: 600;
     color: #251919;
 }
 
@@ -78,4 +77,9 @@ button {
 .deletebutton {
     background-color: #ff0000;
     color: #fff;
+}
+
+form > div#errorAlertSlot > p {
+    color: #ff3939;
+    font-size: 14px;
 }
