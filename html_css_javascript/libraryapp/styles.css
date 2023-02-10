@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .bodyheader {
-    font-size: 24px;
+    font-size: 32px;
     margin-bottom: 16px;
 }
 
@@ -9,6 +15,7 @@ form {
     background-color: rgb(219, 217, 217);
     padding: 12px;
     border: 1px solid #000;
+    border-radius: 12px;
 }
 
 input {
@@ -38,4 +45,37 @@ body {
     padding: 12px;
     border: 1px solid #000;
     min-height: 140px;
+    border-radius: 12px;
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 8px;
+    font-weight: 600;
+    color: #251919;
+}
+
+.is_read {
+    background-color: #367604;
+    color: #fff;
+}
+
+.is_not_read {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+button {
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-right: 24px;
+    border: 2px solid #000;;
+}
+
+.deletebutton {
+    background-color: #ff0000;
+    color: #fff;
 }
