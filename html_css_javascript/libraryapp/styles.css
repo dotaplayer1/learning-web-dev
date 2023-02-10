@@ -20,6 +20,7 @@ form {
 
 input {
     border: 1px solid #000;
+    max-width: 140px;
 }
 
 .formitem {
@@ -30,7 +31,7 @@ input {
 
 #displaysection {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 24px;
 }
 
