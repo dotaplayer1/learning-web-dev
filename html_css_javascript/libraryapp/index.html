@@ -10,23 +10,26 @@
 <body>
     <script src="script.js" defer></script>
     <div class="bodyheader">Library app</div>
-
-    <div class="formbody">
+    <div id="displaysection">
         <form>
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title">
-            <label for="author">Author:</label>
-            <input type="text" name="author" id="author">
-            <label for="pagecount">Page count:</label>
-            <input type="text" name="pagecount" id="pagecount">
-            <label for="hasread">Has read:</label>
-            <input type="checkbox" name="hasread" id="hasread">
+            <div class="formitem">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title">    
+            </div>
+            <div class="formitem">
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author">    
+            </div>
+            <div class="formitem">
+                <label for="pagecount">Page count:</label>
+                <input type="text" name="pagecount" id="pagecount">    
+            </div>
+            <div class="formitem">
+                <label for="hasread">Has read:</label>
+                <input type="checkbox" name="hasread" id="hasread">    
+            </div>
             <input type="button" value="Submit">
         </form>
-    </div>
-
-    <div class="section1">
-        
     </div>
 </body>
 </html>

@@ -6,5 +6,36 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    background-color: rgb(219, 217, 217);
+    padding: 12px;
+    border: 1px solid #000;
+}
+
+input {
+    border: 1px solid #000;
+}
+
+.formitem {
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#displaysection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 24px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 24px;
+}
+
+.card {
+    background-color: rgb(219, 217, 217);
+    padding: 12px;
+    border: 1px solid #000;
+    min-height: 140px;
 }
