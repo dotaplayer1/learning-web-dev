@@ -1,5 +1,6 @@
 const gameBoardSection = document.querySelector('#gameBoardSection');
 const textSection = document.querySelector('.textSection');
+const resetButton = document.querySelector('.resetButton')
 
 // creates a board and has the game logic coded directly inside
 const tictactoeBoard = (() => {
@@ -73,7 +74,23 @@ const tictactoeBoard = (() => {
         }
     }
 
-    return gameBoard;
+    function resetGame() {
+        turns = 0;
+        currentPlayer = 1;
+        gameOver = false;
+        boardArr = [0,0,0,0,0,0,0,0,0,0];
+        const collection = document.getElementsByClassName("boardSection");
+        for (let i = 0; i < 9; i++) {
+            collection[i].textContent = '';
+        }
+        textSection.textContent = 'Player 1\'s turn';
+    }
+
+    return {gameBoard, resetGame};
 })();
 
-gameBoardSection.appendChild(tictactoeBoard);
+gameBoardSection.appendChild(tictactoeBoard.gameBoard);
+
+resetButton.addEventListener('click', function() {
+    tictactoeBoard.resetGame();
+});

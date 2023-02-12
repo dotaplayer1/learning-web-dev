@@ -52,3 +52,24 @@ body {
     grid-gap: 12px;
     border-radius: 20px;
 }
+
+.\31 {
+    border-top-left-radius: 12px;
+}
+
+.\33 {
+    border-top-right-radius: 12px;
+}
+
+.\37 {
+    border-bottom-left-radius: 12px;
+}
+
+.\39 {
+    border-bottom-right-radius: 12px;
+}
+
+.resetButton {
+    padding: 8px;
+    font-size: 16px;
+}
