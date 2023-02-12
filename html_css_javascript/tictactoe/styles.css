@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dad6d6;
+}
+
+.pagetitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.boardSection {
+    height: 100px;
+    width: 100px;
+    background: #606ff1;
+    transition: 300ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+}
+
+.boardSection:hover {
+    background: rgb(218, 19, 218);
+}
+
+.gameBoard {
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 12px;
+    border-radius: 20px;
+}
