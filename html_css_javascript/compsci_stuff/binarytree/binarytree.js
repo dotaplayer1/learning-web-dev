@@ -10,7 +10,7 @@ function binaryTree(sortedArr) {
     // takes in a sorted array and converts it into a binary tree
     this.buildTree = function(arr, start, end) {
         if (start > end) return null;
-        let mid = parseInt((start + end) / 2); 
+        let mid = Math.floor((start + end) / 2); 
         let node = new Node(arr[mid]);
         node.left = this.buildTree(arr, start, mid - 1);
         node.right = this.buildTree(arr, mid + 1, end);
@@ -38,6 +38,96 @@ function binaryTree(sortedArr) {
             }
         }
     }
+    
+    this.delete = function(value, currentNode = this.root) {
+    }
+
+    this.find = function(value, currentNode = this.root) {
+        if (value === currentNode.value) {
+            return currentNode;
+        }
+        if (value > currentNode.value) {
+            if (currentNode.right === null) {
+                return false;
+            } else {
+                return this.find(value, currentNode.right);
+            }
+        } else {
+            if (currentNode.left === null) {
+                return false;
+            } else {
+                return this.find(value, currentNode.left);
+            }
+        }
+    }
+
+    this.levelOrderTraversal = function(nodeValues = []) {
+        let queue = [];
+        if (this.root === null) {
+            return null;
+        }
+        queue.push(this.root);
+        while (queue.length !== 0) {
+            currentNode = queue.shift();
+            if (currentNode.left !== null) queue.push(currentNode.left);
+            if (currentNode.right !== null) queue.push(currentNode.right);
+            nodeValues.push(currentNode.value);
+        }
+        return nodeValues;
+    }
+
+    // root left then right
+    this.preOrderTraversal = function(currentNode = this.root, nodeValues = []) {
+        if (currentNode === null) return;
+        nodeValues.push(currentNode.value);
+        this.preOrderTraversal(currentNode.left, nodeValues);
+        this.preOrderTraversal(currentNode.right, nodeValues);
+        return(nodeValues);
+    }
+    // left root then right
+    this.inOrderTraversal = function(currentNode = this.root, nodeValues = []) {
+        if (currentNode === null) return;
+        this.inOrderTraversal(currentNode.left, nodeValues);
+        nodeValues.push(currentNode.value);
+        this.inOrderTraversal(currentNode.right, nodeValues);
+        return(nodeValues);
+    }
+    //left right then root
+    this.postOrderTraversal = function(currentNode = this.root, nodeValues = []) {
+        if (currentNode === null) return;
+        this.postOrderTraversal(currentNode.left, nodeValues);
+        this.postOrderTraversal(currentNode.right, nodeValues);
+        nodeValues.push(currentNode.value);
+        return(nodeValues);
+    }
+    
+    this.height = function(currentNode = this.root) {
+        if (currentNode === null) return 0;
+        let leftHeight = this.height(currentNode.left);
+        let rightHeight = this.height(currentNode.right);
+        if (leftHeight > rightHeight) {
+            return (leftHeight + 1);
+        } else {
+            return (rightHeight + 1);
+        } 
+    }
+    
+    this.isBalanced = function() {
+        if (this.root === null) return true;
+        let rightHeight = this.height(this.root.right);
+        let leftHeight = this.height(this.root.left);
+        let heightDiff = rightHeight - leftHeight;
+        if (heightDiff === 1 || heightDiff === -1 || heightDiff === 0) return true;
+        return false;
+    }
+    
+    this.rebalance = function() {
+        if (this.isBalanced === true) {
+            return;
+        }
+        let treeArr = this.inOrderTraversal();
+        this.root = this.buildTree(treeArr, 0, treeArr.length);
+    }
 }
 
 let arr1 = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
@@ -46,6 +136,24 @@ let binaryTree1 = new binaryTree(arr1)
 prettyPrint(binaryTree1.root);
 console.log();
 let binaryTree2 = new binaryTree([1, 2, 3, 4, 5, 6, 7]);
-prettyPrint(binaryTree2.root);
 binaryTree2.insert(20);
+binaryTree2.insert(18);
+binaryTree2.insert(19);
+binaryTree2.insert(40);
+binaryTree2.insert(80);
 prettyPrint(binaryTree2.root);
+console.log(binaryTree2.inOrderTraversal());
+binaryTree2.rebalance();
+prettyPrint(binaryTree2.root);
+// console.log(binaryTree1.isBalanced());
+// console.log(binaryTree2.isBalanced());
+// console.log(binaryTree2.find(69));
+// console.log(binaryTree2.find(9));
+// console.log(binaryTree2.find(6));
+// console.log(binaryTree2.levelOrderTraversal());
+// console.log(binaryTree1.levelOrderTraversal());
+// console.log(binaryTree2.inOrderTraversal());
+// console.log(binaryTree2.preOrderTraversal());
+// console.log(binaryTree2.postOrderTraversal());
+// console.log(binaryTree2.height());
+// console.log(binaryTree1.height());
