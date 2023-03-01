@@ -6,9 +6,9 @@ function Node(value = null, left = null, right = null) {
     this.right = right;
 }
 
-function binaryTree(sortedArr) {
+function binarySearchTree(sortedArr) {
     // takes in a sorted array and converts it into a binary tree
-    this.buildTree = function(arr, start, end) {
+    this.buildTree = function(arr, start = 0, end = arr.length - 1) {
         if (start > end) return null;
         let mid = Math.floor((start + end) / 2); 
         let node = new Node(arr[mid]);
@@ -17,7 +17,7 @@ function binaryTree(sortedArr) {
         return node;
     }
 
-    this.root = this.buildTree(sortedArr, 0, sortedArr.length - 1);
+    this.root = this.buildTree(sortedArr);
 
     this.insert = function(value ,currentNode = this.root) {
         if (value === currentNode.value) {
@@ -39,8 +39,35 @@ function binaryTree(sortedArr) {
         }
     }
     
-    this.delete = function(value, currentNode = this.root) {
+    this.minVal = function(currentNode) {
+        while (currentNode.left !== null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode;
+    } 
+
+    this.deleteVal = function(value, currentNode = this.root) {
+        if (currentNode === null) return null;
+        if (value > currentNode.value) {
+            currentNode.right = this.deleteVal(value, currentNode.right);
+        } else if (value < currentNode.value) {
+            currentNode.left = this.deleteVal(value, currentNode.left);
+        } else {
+            if (currentNode.left === null && currentNode.right === null) {
+                currentNode = null;
+            } else if (currentNode.left === null) {
+                currentNode = currentNode.right;
+            } else if (currentNode.right === null) {
+                currentNode = currentNode.left;
+            } else {
+                let temp = this.minVal(currentNode.right);
+                currentNode.value = temp.value;
+                currentNode.right = this.deleteVal(temp.value, currentNode.right);
+            }
+        }
+        return currentNode;
     }
+
 
     this.find = function(value, currentNode = this.root) {
         if (value === currentNode.value) {
@@ -126,27 +153,31 @@ function binaryTree(sortedArr) {
             return;
         }
         let treeArr = this.inOrderTraversal();
-        this.root = this.buildTree(treeArr, 0, treeArr.length);
+        this.root = this.buildTree(treeArr);
     }
 }
 
 let arr1 = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 arr1 = mergesort(uniq(arr1));
-let binaryTree1 = new binaryTree(arr1)
+let binaryTree1 = new binarySearchTree(arr1)
 prettyPrint(binaryTree1.root);
 console.log();
-let binaryTree2 = new binaryTree([1, 2, 3, 4, 5, 6, 7]);
+let binaryTree2 = new binarySearchTree([1, 2, 3, 4, 5, 6, 7]);
 binaryTree2.insert(20);
 binaryTree2.insert(18);
 binaryTree2.insert(19);
 binaryTree2.insert(40);
 binaryTree2.insert(80);
 prettyPrint(binaryTree2.root);
-console.log(binaryTree2.inOrderTraversal());
+console.log(binaryTree2.isBalanced());
 binaryTree2.rebalance();
+console.log(binaryTree2.isBalanced());
+prettyPrint(binaryTree2.root);
+console.log();
+console.log();
+binaryTree2.deleteVal(4);
 prettyPrint(binaryTree2.root);
 // console.log(binaryTree1.isBalanced());
-// console.log(binaryTree2.isBalanced());
 // console.log(binaryTree2.find(69));
 // console.log(binaryTree2.find(9));
 // console.log(binaryTree2.find(6));
@@ -157,3 +188,5 @@ prettyPrint(binaryTree2.root);
 // console.log(binaryTree2.postOrderTraversal());
 // console.log(binaryTree2.height());
 // console.log(binaryTree1.height());
+
+module.exports = binarySearchTree;
