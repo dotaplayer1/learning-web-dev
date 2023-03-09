@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { Clock } from './components/Clock';
+import { Toggle } from './components/Toggle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,7 +22,7 @@ const user = {
     lastName: "Smith"
 };
 
-const element = <a href="https://www.reactjs.org"> link </a>;
+const link = <a href="https://www.reactjs.org"> link </a>;
 
 const parentDivWithChildren = (
     <div>
@@ -29,14 +31,60 @@ const parentDivWithChildren = (
     </div>
 );
 
-function tick() {
-    const timeElement = (
-        <div>
-            <h1>Hello, world!</h1>
-            <h2>It is {new Date().toLocaleTimeString()}.</h2>
-        </div>
-    );
-    root.render(timeElement);
+// function tick() {
+//     const timeElement = (
+//         <div>
+//             <h1>Hello, world!</h1>
+//             <h2>It is {new Date().toLocaleTimeString()}.</h2>
+//         </div>
+//     );
+//     root.render(timeElement);
+// }
+
+function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>
 }
 
-setInterval(tick, 1000);
+function multipleWelcomes() {
+    return (
+        <div>
+            <Welcome name="1" />
+            <Welcome name="2" />
+            <Welcome name="3" />
+        </div>
+    )
+}
+
+// function Clock(props) {
+//     return (
+//         <div>
+//             <h1>asdf</h1>
+//             <h2>It is {props.date.toLocaleTimeString()}.</h2>
+//         </div>
+//     );
+// }
+
+// function tick2() {
+//     root.render(<Clock date={new Date()} />);
+// }
+
+function printHelloWorld() {
+    console.log("Hello world");
+}
+
+function Form() {
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("You clicked submit.");
+    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <button type="submit">Submit</button>
+        </form>
+    );
+
+}
+
+root.render(
+    <Toggle />
+);
