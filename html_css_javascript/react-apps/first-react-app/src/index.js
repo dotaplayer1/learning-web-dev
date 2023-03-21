@@ -68,23 +68,49 @@ function multipleWelcomes() {
 //     root.render(<Clock date={new Date()} />);
 // }
 
-function printHelloWorld() {
-    console.log("Hello world");
+// function printHelloWorld() {
+//     console.log("Hello world");
+// }
+
+// function Form() {
+//     function handleSubmit(e) {
+//         e.preventDefault();
+//         console.log("You clicked submit.");
+//     }
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <button type="submit">Submit</button>
+//         </form>
+//     );
+
+// }
+
+// function UserGreeting(props) {
+//     return <h1>Welcome back!</h1>
+// }
+
+// function GuestGreeting(props) {
+//     return <h1>Please sign up.</h1>
+// }
+
+// function Greeting(props) {
+//     const isLoggedIn = props.isLoggedIn;
+//     if (isLoggedIn) {
+//         return <UserGreeting />;
+//     }
+//     return <GuestGreeting />;
+// }
+
+function NumberList(props) {
+    const numbers = props.numbers;
+    const listItems = numbers.map((number) => 
+        <li key={number.toString()}>{number}</li>
+    )
+    return (<ul>{listItems}</ul>)
 }
 
-function Form() {
-    function handleSubmit(e) {
-        e.preventDefault();
-        console.log("You clicked submit.");
-    }
-    return (
-        <form onSubmit={handleSubmit}>
-            <button type="submit">Submit</button>
-        </form>
-    );
-
-}
+const numbers = [1, 2, 3, 4, 5];
 
 root.render(
-    <Toggle />
+    <NumberList numbers={numbers} />
 );
