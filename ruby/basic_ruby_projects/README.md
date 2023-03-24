@@ -1,6 +1,6 @@
 done following https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby#basic-ruby-projects
 
-## about
+## About
 
 caesar_cipher.rb: encrypts user input using the caesar cipher
 
