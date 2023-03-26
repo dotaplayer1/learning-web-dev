@@ -28,6 +28,7 @@ class Board
         return true
       end
     end
+    false
   end
 
   def valid_move?(input)
@@ -35,6 +36,6 @@ class Board
   end
 
   def place_marker(input, marker)
-    board[input] == marker
+    board[input] = marker
   end
 end
