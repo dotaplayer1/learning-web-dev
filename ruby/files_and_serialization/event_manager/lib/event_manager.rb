@@ -1,6 +1,7 @@
 require 'csv'
 require 'google/apis/civicinfo_v2'
 require 'erb'
+require 'date'
 require 'pry'
 
 def clean_zipcode(zipcode)
@@ -75,7 +76,6 @@ end
 def clean_number(number)
   return "?" if number.nil?
   phone_number = number.gsub(/[^0-9]/, '')
-  binding.pry if phone_number == 14018685000
   if phone_number.chars[0] == "1" && phone_number.length > 10
     phone_number = phone_number.to_s[1..-1]
   end
@@ -86,4 +86,38 @@ def clean_number(number)
   end
 end
 
-print_numbers
+def peak_hours
+  contents = open_file
+  hash = Hash.new(0)
+
+  contents.each do |row|
+    reg_date = row[:regdate] 
+    reg_date = Time.strptime(reg_date, "%m/%d/%y %H:%M").strftime("%H")
+    hash[reg_date] += 1
+  end
+
+  peak_hour = hash.max_by { |k, v| v }[1]
+  hash.select! { |k, v| v == peak_hour }
+  hash.keys
+end
+
+def peak_days
+  contents = open_file
+  hash = Hash.new(0)
+
+  contents.each do |row|
+    reg_date = row[:regdate]
+    reg_date = Time.strptime(reg_date, "%m/%d/%y %H:%M").strftime("%Y %m %d").split
+    reg_date.map! { |i| i.to_i }
+    day = Date.new(reg_date[0], reg_date[1], reg_date[2]).wday
+    hash[day] += 1
+  end
+
+  peak_day = hash.max_by { |k, v| v }[1]
+  hash.select! { |k, v| v == peak_day}
+  puts hash
+  hash.keys.map { |i| i = Date::DAYNAMES[i] }
+end
+
+peak_hours
+puts peak_days
