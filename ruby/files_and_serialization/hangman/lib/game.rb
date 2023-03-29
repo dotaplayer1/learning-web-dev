@@ -3,7 +3,7 @@ require_relative 'save_load_stuff'
 class Game
   attr_accessor :word, :guesses, :letters_guessed, :solved_letters, :save
 
-  def initialize(word, guesses, letters_guessed, solved_letters = Array.new(word.length))
+  def initialize(word, guesses = 6, letters_guessed = [], solved_letters = Array.new(word.length))
     @save = SaveLoadStuff.new
     @word = word
     @guesses = guesses
