@@ -15,6 +15,14 @@ module Enumerable
     end
     selected_values
   end
+
+  def my_all?
+    all_true = true
+    for item in self
+      all_true = false unless yield(item) == true
+    end
+    all_true
+  end
 end
 
 # You will first have to define my_each
