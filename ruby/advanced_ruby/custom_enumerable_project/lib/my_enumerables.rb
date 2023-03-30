@@ -7,6 +7,14 @@ module Enumerable
       index += 1
     end
   end
+
+  def my_select
+    selected_values = []
+    for item in self
+      selected_values.push(item) if yield(item)
+    end
+    selected_values
+  end
 end
 
 # You will first have to define my_each
