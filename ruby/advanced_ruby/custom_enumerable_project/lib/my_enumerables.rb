@@ -31,6 +31,14 @@ module Enumerable
     end
     any_true
   end
+
+  def my_none?
+    all_false = true
+    for item in self
+      all_false = false if yield(item) == true
+    end
+    all_false
+  end
 end
 
 # You will first have to define my_each
