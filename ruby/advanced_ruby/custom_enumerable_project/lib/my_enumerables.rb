@@ -48,6 +48,21 @@ module Enumerable
     end
     count
   end
+
+  def my_map
+    arr = []
+    for item in self
+      arr << yield(item)
+    end
+    arr
+  end
+
+  def my_inject(sum)
+    for item in self
+      sum = yield(sum, item)
+    end
+    sum 
+  end
 end
 
 # You will first have to define my_each
