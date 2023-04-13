@@ -1,1 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+$primary: rgb(124, 194, 221);
+
+body {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
 @import "bootstrap/scss/bootstrap";
