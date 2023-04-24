@@ -20,11 +20,11 @@ class Board
     board.all? { |i| i.is_a?(String) }
   end
 
-  def game_is_won?
+  def game_is_won?(board_to_check = board)
     WINNING_POSITIONS.each do |winning_pos|
-      if [board[winning_pos[0]],
-          board[winning_pos[1]],
-          board[winning_pos[2]]].uniq.length == 1
+      if [board_to_check[winning_pos[0]],
+          board_to_check[winning_pos[1]],
+          board_to_check[winning_pos[2]]].uniq.length == 1
         return true
       end
     end
