@@ -1,5 +1,5 @@
 module Markers
-  def yellow_marker 
+  def yellow_marker
     "\e[33m\u25cf\e[0m"
   end
 

@@ -1,4 +1,4 @@
-require_relative "pieces.rb"
+require_relative 'pieces'
 
 class Board
   include Markers
@@ -18,9 +18,9 @@ class Board
       row.each do |tile|
         print_tile(tile)
       end
-      puts ""
+      puts ''
     end
-    puts "1 2 3 4 5 6 7"
+    puts '1 2 3 4 5 6 7'
   end
 
   def print_tile(tile)
@@ -32,7 +32,7 @@ class Board
     when 2
       print blue_marker
     end
-    print " "
+    print ' '
   end
 
   def place_marker(row, col, marker)
