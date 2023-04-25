@@ -1,11 +1,10 @@
 require_relative './board'
-require 'pry'
 
 class Game
-  attr_reader :board, :player, :column_height, :turns_played
+  attr_reader :game_board, :player, :column_height, :turns_played
 
   def initialize(column_height = [0, 0, 0, 0, 0, 0, 0])
-    @board = Board.new
+    @game_board = Board.new
     @player = 1
     @column_height = column_height
     @turns_played = 0
@@ -13,7 +12,7 @@ class Game
 
   def play
     loop do
-      board.print_board
+      game_board.print_board
       valid_move = get_valid_move
       place_marker(valid_move)
       return if game_end?(valid_move)
@@ -24,16 +23,16 @@ class Game
   end
 
   def place_marker(valid_move)
-    board.place_marker(5 - column_height[valid_move], valid_move, player)
+    game_board.place_marker(5 - column_height[valid_move], valid_move, player)
   end
 
   def game_end?(valid_move)
     if tie_game?(turns_played)
-      board.print_board
+      game_board.print_board
       puts "\nTie game!"
       true
     elsif game_won?(valid_move)
-      board.print_board
+      game_board.print_board
       puts "\nPlayer #{player} wins!"
       true
     end
@@ -51,8 +50,7 @@ class Game
   def get_valid_move
     input = -1
     loop do
-      puts ''
-      puts "Player #{player}, Enter a column: "
+      puts "\nPlayer #{player}, Enter a column: "
       input = ask_for_input
       break unless is_valid_move?(input) == false
 
@@ -74,7 +72,7 @@ class Game
   end
 
   def column_not_full?(input)
-    6 > column_height[input]
+    column_height[input] < 6
   end
 
   def tie_game?(turns)
@@ -82,14 +80,16 @@ class Game
   end
 
   def game_won?(move)
-    return true if horizontal_win?(move)
-    return true if vertical_win?(move)
-    return true if diagonal_win_from_bottom_left?(move)
-    return true if diagonal_win_from_bottom_right?(move)
+    row_pos = 5 - column_height[move]
+    col_pos = move
+    return true if horizontal_win?(row_pos, game_board.board)
+    return true if vertical_win?(col_pos, game_board.board)
+    return true if diagonal_win_from_bottom_left?(row_pos, col_pos, game_board.board)
+    return true if diagonal_win_from_bottom_right?(row_pos, col_pos, game_board.board)
   end
 
-  def horizontal_win?(move)
-    row = board.board[5 - column_height[move]]
+  def horizontal_win?(row_pos, board)
+    row = board[row_pos]
     4.times do |i|
       position = [row[0 + i], row[1 + i], row[2 + i], row[3 + i]]
       return true if [[1, 1, 1, 1], [2, 2, 2, 2]].include?(position)
@@ -97,14 +97,14 @@ class Game
     false
   end
 
-  def vertical_win?(move)
+  def vertical_win?(col_pos, board)
     column = [
-      board.board[0][move],
-      board.board[1][move],
-      board.board[2][move],
-      board.board[3][move],
-      board.board[4][move],
-      board.board[5][move]
+      board[0][col_pos],
+      board[1][col_pos],
+      board[2][col_pos],
+      board[3][col_pos],
+      board[4][col_pos],
+      board[5][col_pos]
     ]
     4.times do |i|
       position = [column[0 + i], column[1 + i], column[2 + i], column[3 + i]]
@@ -113,14 +113,14 @@ class Game
     false
   end
 
-  def diagonal_win_from_bottom_left?(move)
+  def diagonal_win_from_bottom_left?(row_pos, col_pos, board)
     diagonal = []
     bottom_left_x = -3
     bottom_left_y = 3
     7.times do
-      x_pos = bottom_left_x + move
-      y_pos = bottom_left_y + 5 - column_height[move]
-      diagonal.push(board.board[y_pos][x_pos]) if x_pos.between?(0, 6) && y_pos.between?(0, 5)
+      x_pos = bottom_left_x + col_pos
+      y_pos = bottom_left_y + row_pos
+      diagonal.push(board[y_pos][x_pos]) if x_pos.between?(0, 6) && y_pos.between?(0, 5)
       bottom_left_x += 1
       bottom_left_y -= 1
     end
@@ -133,14 +133,14 @@ class Game
     false
   end
 
-  def diagonal_win_from_bottom_right?(move)
+  def diagonal_win_from_bottom_right?(row_pos, col_pos, board)
     diagonal = []
     bottom_left_x = 3
     bottom_left_y = 3
     7.times do
-      x_pos = bottom_left_x + move
-      y_pos = bottom_left_y + 5 - column_height[move]
-      diagonal.push(board.board[y_pos][x_pos]) if x_pos.between?(0, 6) && y_pos.between?(0, 5)
+      x_pos = bottom_left_x + col_pos
+      y_pos = bottom_left_y + row_pos
+      diagonal.push(board[y_pos][x_pos]) if x_pos.between?(0, 6) && y_pos.between?(0, 5)
       bottom_left_x -= 1
       bottom_left_y -= 1
     end
