@@ -17,7 +17,7 @@ class Game
       place_marker(valid_move)
       return if game_end?(valid_move)
 
-      update_game(valid_move)
+      update_column_height(valid_move)
       swap_turns
     end
   end
@@ -27,6 +27,7 @@ class Game
   end
 
   def game_end?(valid_move)
+    @turns_played += 1
     if tie_game?(turns_played)
       game_board.print_board
       puts "\nTie game!"
@@ -38,9 +39,8 @@ class Game
     end
   end
 
-  def update_game(valid_move)
+  def update_column_height(valid_move)
     column_height[valid_move] += 1
-    @turns_played += 1
   end
 
   def swap_turns
