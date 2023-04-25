@@ -16,21 +16,25 @@ class Board
   def print_board
     board.each do |row|
       row.each do |tile|
-        case tile
-        when 0
-          print empty_tile
-        when 1
-          print yellow_marker
-        when 2
-          print blue_marker
-        end
-        print " "
+        print_tile(tile)
       end
       puts ""
     end
   end
 
+  def print_tile(tile)
+    case tile
+    when 0
+      print empty_tile
+    when 1
+      print yellow_marker
+    when 2
+      print blue_marker
+    end
+    print " "
+  end
+
   def place_marker(row, col, marker)
-    board[5 - row][col] = marker
+    board[row][col] = marker
   end
 end

@@ -15,19 +15,28 @@ class Game
     loop do
       board.print_board
       valid_move = get_valid_move
-      board.place_marker(column_height[valid_move], valid_move, 1)
-      column_height[valid_move] += 1
-      @turns_played += 1
-      if tie_game?(turns_played)
-        board.print_board
-        puts "Tie game!"
-        return
-      elsif game_won? 
+      update_game(valid_move)
+      if game_won?
         board.print_board
         puts "Game won!" 
         return
+      elsif tie_game?(turns_played) 
+        board.print_board
+        puts "Tie game!"
+        return
       end
+      swap_turns
     end
+  end
+
+  def update_game(valid_move)
+    board.place_marker(5 - column_height[valid_move], valid_move, player)
+    column_height[valid_move] += 1
+    @turns_played += 1
+  end
+
+  def swap_turns
+    player == 1 ? @player += 1 : @player -= 1
   end
 
   def get_valid_move
