@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+        margin-top: 0;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    form {
+        margin: 0 auto;
+        width: 400px;
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+    }
+
+    div+div {
+        margin-top: 1em;
+    }
+
+    label span {
+        display: inline-block;
+        width: 120px;
+        text-align: right;
+    }
+
+    input, textarea {
+        font: 1em sans-serif;
+        width: 250px;
+        box-sizing: border-box;
+        border: 1px solid #999;
+    }
+
+    input[type=checkbox], input[type=radio] {
+        width: auto;
+        border: none;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #000;
+    }
+
+    textarea {
+        vertical-align: top;
+        height: 5em;
+        resize: vertical;
+    }
+
+    fieldset {
+        width: 250px;
+        box-sizing: border-box;
+        margin-right: 136px;
+        border: 1px solid #999;
+    }
+
+    button {
+        margin: 20px 0 0 124px;
+    }
+
+    label {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <form method="get">
+    <h1>Payment form</h1>
+    <p>Required fields are followed by <strong><span aria-label="required">*</span></strong></p>
+    <section>
+      <h2>Contact information</h2>
+      <fieldset>
+        <legend>Title</legend>
+        <ul>
+          <li>
+            <input type="radio" id="title_1" name="title" value="K" />
+            <label for="title_1">King</label>
+          </li>
+          <li>
+            <input type="radio" id="title_2" name="title" value="Q" />
+            <label for="title_2">Queen</label>
+          </li>
+          <li>
+            <input type="radio" id="title_3" name="title" value="J" />
+            <label for="title_3">Joker</label>
+          </li>
+        </ul>
+      </fieldset>
+      <p>
+        <label for="name">
+          <span>name: </span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input type="text" id="name" name="username">
+      </p>
+      <p>
+        <label for="email">
+          <span>email: </span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input type="text" id="email" name="usermail" />
+      </p>
+      <p>
+        <label for="pwd">
+          <span>password: </span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input type="text" id="pwd" name="password" />
+      </p>
+    </section>
+    <section>
+      <h2>Payment information</h2>
+      <p>
+        <label for="card">
+          <span>Card type: </span>
+        </label>
+        <select name="usercard" id="card">
+          <option value="visa">Visa</option>
+          <option value="mc">Mastercard</option>
+          <option value="amex">American Express</option>
+        </select>
+      </p>
+      <p>
+        <label for="number">
+          <span>Card number:</span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input type="tel" id="number" name="cardnumber" />
+      </p>
+      <p>
+        <label for="expiration">
+          <span>Expiration date:</span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input
+          type="text"
+          id="expiration"
+          required="true"
+          placeholder="MM/YY"
+          pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" />
+      </p>
+    </section>
+    <section>
+      <p><button type="submit">Validate the payment</button></p>
+    </section>
+  </form>
+</body>
+</html>
